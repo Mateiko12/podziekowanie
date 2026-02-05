@@ -14,51 +14,68 @@
         color: white;
     }
 
-    /* Animowane tło */
+    /* ===== BĄBELKI ===== */
     .bubble {
         position: absolute;
-        bottom: -100px;
-        width: 40px;
-        height: 40px;
-        background: rgba(255,255,255,0.15);
+        bottom: -150px;
+        background: rgba(255,255,255,0.25);
         border-radius: 50%;
-        animation: floatUp 20s infinite linear;
+        animation: floatUp 15s infinite linear;
+        filter: blur(1px);
     }
 
-    .bubble:nth-child(1) { left: 10%; animation-duration: 18s; width: 30px; height: 30px; }
-    .bubble:nth-child(2) { left: 25%; animation-duration: 22s; }
-    .bubble:nth-child(3) { left: 50%; animation-duration: 16s; width: 50px; height: 50px; }
-    .bubble:nth-child(4) { left: 70%; animation-duration: 25s; width: 35px; height: 35px; }
-    .bubble:nth-child(5) { left: 85%; animation-duration: 19s; }
+    .bubble:nth-child(1) { left: 5%; width: 60px; height: 60px; animation-duration: 14s; }
+    .bubble:nth-child(2) { left: 20%; width: 90px; height: 90px; animation-duration: 18s; }
+    .bubble:nth-child(3) { left: 40%; width: 70px; height: 70px; animation-duration: 16s; }
+    .bubble:nth-child(4) { left: 60%; width: 100px; height: 100px; animation-duration: 20s; }
+    .bubble:nth-child(5) { left: 80%; width: 50px; height: 50px; animation-duration: 13s; }
 
     @keyframes floatUp {
         from { transform: translateY(0); opacity: 0; }
         10% { opacity: 1; }
-        to { transform: translateY(-120vh); opacity: 0; }
+        to { transform: translateY(-130vh); opacity: 0; }
     }
 
-    /* Karta */
+    /* ===== KONFETTI ===== */
+    .confetti {
+        position: absolute;
+        width: 8px;
+        height: 14px;
+        background: red;
+        top: -20px;
+        animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* ===== KARTA ===== */
     .container {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
+        z-index: 2;
+        position: relative;
     }
 
     .card {
         background: rgba(0,0,0,0.4);
         padding: 35px;
         border-radius: 20px;
-        max-width: 420px;
+        max-width: 450px;
         text-align: center;
         box-shadow: 0 0 30px rgba(0,0,0,0.5);
         animation: floatCard 4s ease-in-out infinite;
-        z-index: 2;
     }
 
     @keyframes floatCard {
         0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-12px); }
         100% { transform: translateY(0px); }
     }
 
@@ -77,15 +94,21 @@
         line-height: 1.5;
     }
 
+    .highlight {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
     .heart {
-        font-size: 2.5em;
+        font-size: 2.8em;
         margin: 15px 0;
         animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
         0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
+        50% { transform: scale(1.3); }
         100% { transform: scale(1); }
     }
 
@@ -99,7 +122,7 @@
 </head>
 <body>
 
-    <!-- Bąbelki w tle -->
+    <!-- Bąbelki -->
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
@@ -113,13 +136,18 @@
 
             <p>
                 Jest Pan jedyną osobą z serwisu, która daje nam elektro.<br>
-                Bardzo to doceniamy i naprawdę bardzo Pana lubimy!
+                Naprawdę bardzo to doceniamy!
             </p>
 
             <p>
                 Dzięki Panu możemy rozwijać nasze hobby<br>
                 ze zbieraniem i poznawaniem elektroniki.
             </p>
+
+            <div class="highlight">
+                To dla nas naprawdę dużo znaczy.<br>
+                Dziękujemy za dobre serce i życzliwość!
+            </div>
 
             <div class="heart">❤️</div>
 
@@ -128,6 +156,21 @@
             </div>
         </div>
     </div>
+
+<script>
+/* KONFETTI NA START */
+for (let i = 0; i < 80; i++) {
+    let conf = document.createElement("div");
+    conf.classList.add("confetti");
+    conf.style.left = Math.random() * 100 + "vw";
+    conf.style.background = 
+        ["#ff0", "#f0f", "#0ff", "#0f0", "#f00"][Math.floor(Math.random()*5)];
+    conf.style.animationDelay = Math.random() * 2 + "s";
+    document.body.appendChild(conf);
+
+    setTimeout(() => conf.remove(), 4000);
+}
+</script>
 
 </body>
 </html>
