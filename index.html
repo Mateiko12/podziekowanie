@@ -7,7 +7,7 @@
 <style>
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
+        font-family: 'Arial', sans-serif;
         background: linear-gradient(135deg, #00c6ff, #0072ff);
         display: flex;
         justify-content: center;
@@ -18,47 +18,85 @@
     }
 
     .card {
-        background: rgba(0,0,0,0.3);
-        padding: 30px;
+        background: rgba(0,0,0,0.35);
+        padding: 30px 25px;
         border-radius: 20px;
-        max-width: 400px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        max-width: 420px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        animation: fadeIn 1.2s ease;
     }
 
     h1 {
-        font-size: 2.5em;
+        font-size: 2.4em;
         margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 1.2em;
     }
 
     .icons {
         font-size: 2em;
-        margin: 15px 0;
+        margin: 10px 0 15px 0;
+    }
+
+    p {
+        font-size: 1.15em;
+        line-height: 1.5;
+        margin: 10px 0;
+    }
+
+    .extra {
+        margin-top: 15px;
+        font-size: 1em;
+        opacity: 0.9;
+    }
+
+    .heart {
+        font-size: 2.5em;
+        margin-top: 10px;
+        animation: pulse 1.5s infinite;
     }
 
     .footer {
-        margin-top: 20px;
+        margin-top: 25px;
         font-size: 0.9em;
-        opacity: 0.8;
+        opacity: 0.7;
+        font-style: italic;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 </style>
 </head>
 <body>
     <div class="card">
         <h1>Dziękujemy! ⚡</h1>
-        <div class="icons">❤️ ♻️ 😊</div>
+        <div class="icons">♻️ 🔌 😊</div>
+
         <p>
             Jest Pan jedyną osobą z serwisu, która daje nam elektro.<br>
-            Bardzo to doceniamy i bardzo Pana lubimy!
+            Bardzo to doceniamy i naprawdę bardzo Pana lubimy!
         </p>
+
         <p>
-            Dzięki Panu możemy rozwijać nasze hobby ze zbieraniem elektroniki.
+            Dzięki Panu możemy rozwijać nasze hobby<br>
+            ze zbieraniem i poznawaniem elektroniki.
         </p>
+
+        <div class="extra">
+            To dla nas bardzo miłe i motywujące.<br>
+            Dziękujemy za dobre serce i życzliwość!
+        </div>
+
+        <div class="heart">❤️</div>
+
         <div class="footer">
-            Pozdrawiamy serdecznie!
+            Made by Mateusz
         </div>
     </div>
 </body>
